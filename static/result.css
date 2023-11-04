@@ -1,0 +1,39 @@
+body {
+    background: linear-gradient(rgba(210, 209, 209, 0.267), rgba(163, 163, 163, 0.267));
+    background-color: #0fd3dd;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    font-size: 3em;
+    font-weight: bold;
+    color: red;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+    
+}
+.resultimg {
+    display: flex;
+    justify-content: center;
+  }
+h2{
+    position: absolute;
+    font-size: 2 rem;
+    font-weight: bold;
+    color: rgb(241, 237, 237);
+    text-align: center;
+}
+.info-btn {
+	color: #fff;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	transition: 0.3s;
+	transition-property: background;
+}
+.info-btn:hover {
+	background: #0c4f60;
+}
