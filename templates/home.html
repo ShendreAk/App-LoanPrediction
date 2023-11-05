@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href={{url_for('static',filename='predictor.css')}}>
+    <title>Loan Approval Prediction</title>
+</head>
+<body>
+    <section id="prediction-form">
+        <form class="form" action="/home/predict", method="POST">
+            <h1 class="my-3 text-center">Predictor</h1>
+            <div class="row">
+                <div class="col-md-6 my-2">
+
+                    <div class="md-form">
+                        <label for="Amount" class="Amount"> Total Amount</label>
+                        <input type="number" class="form-control" id="Amount" name="Amount">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="int_rate" class="int_rate">Interest Rate</label>
+                        <input type="number" class="form-control" id="int_rate" name="int_rate">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="term" class="term" name = "term">Term (in months)</label>
+                        <select type ="number" class="form-control" id="term" name="term" aria-label="Term in months">
+                            <option selected>Select Term (in months)</option>
+                            <option value= 1>36</option>
+                            <option value= 5>60</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="installments" class="installments">Installment</label>
+                        <input type="number" class="form-control" id="installments" name="installments">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="annual_inc" class="annual_inc">Annual Income</label>
+                        <input type="number" class="form-control" id="annual_inc" name="annual_inc">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="dti" class="dti">Debt-to-Income ratio (DTI)</label>
+                        <input type="number" class="form-control" id="dti" name="dti">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="open_acc" class="open_acc">Total active accounts</label>
+                        <input type="number" class="form-control" id="open_acc" name="open_acc">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="pub_rec" class="pub_rec">derogatory public records</label>
+                        <input type="number" class="form-control" id="pub_rec" name="pub_rec">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="revol_bal" class="revol_bal">Revolving balance</label>
+                        <input type="number" class="form-control" id="revol_bal" name="revol_bal">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="revol_util" class="revol_util">Revol_bal utilization rate</label>
+                        <input type="number" class="form-control" id="revol_util" name="revol_util">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="total_acc" class="total_acc">Total account</label>
+                        <input type="number" class="form-control" id="total_acc" name="total_acc">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="mort_acc" class="mort_acc">Mortgage accounts</label>
+                        <input type="number" class="form-control" id="mort_acc" name="mort_acc">
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="pub_rec_bankruptcies" class="pub_rec_bankruptcies">Recorded Bankruptcies</label>
+                        <input type="text" class="form-control" id="pub_rec_bankruptcies" name="pub_rec_bankruptcies">
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="Subgrade" class="Subgrade" name="Subgrade">Grade</label>
+                        <select class="Subgrade" id="Subgrade" name="Subgrade" aria-label="Subgrade">
+                            <option selected>Select Grade</option>
+                            <option value= "A1">A1</option>
+                            <option value= "A2">A2</option>
+                            <option value= "A3">A3</option>
+                            <option value= "A4">A4</option>
+                            <option value= "A5">A5</option>
+                            <option value= "B1">B1</option>
+                            <option value= "B2">B2</option>
+                            <option value= "B3">B3</option>
+                            <option value= "B4">B4</option>
+                            <option value= "B5">B5</option>
+                            <option value= "C1">C1</option>
+                            <option value= "C2">C2</option>
+                            <option value= "C3">C3</option>
+                            <option value= "C4">C4</option>
+                            <option value= "C5">C5</option>
+                            <option value= "D1">D1</option>
+                            <option value= "D2">D2</option>
+                            <option value= "D3">D3</option>
+                            <option value= "D4">D4</option>
+                            <option value= "D5">D5</option>
+                            <option value= "E1">E1</option>
+                            <option value= "E2">E2</option>
+                            <option value= "E3">E3</option>
+                            <option value= "E4">E4</option>
+                            <option value= "E5">E5</option>
+                            <option value= "F1">F1</option>
+                            <option value= "F2">F2</option>
+                            <option value= "F3">F3</option>
+                            <option value= "F4">F4</option>
+                            <option value= "F5">F5</option>
+                            <option value= "G1">G1</option>
+                            <option value= "G2">G2</option>
+                            <option value= "G3">G3</option>
+                            <option value= "G4">G4</option>
+                            <option value= "G5">G5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="verification_status" class="verification_status">Verification_status</label>
+                        <select class="verification_status" id="verification_status" name="verification_status" aria-label="verification_status">
+                            <option selected>Select Grade</option>
+                            <option value= "Not Verified">Not Verified</option>
+                            <option value= "Source Verified">Source Verified</option>
+                            <option value= "Verified">Verified</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="application_type" class="application_type">Application Type</label>
+                        <select class="application_type" id="application_type" name="application_type" aria-label="application_type">
+                            <option selected>Select application type</option>
+                            <option value= "DIRECT_PAY">DIRECT_PAY</option>
+                            <option value= "INDIVIDUAL">INDIVIDUAL</option>
+                            <option value= "JOINT">JOINT</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="initial_list_status" class="initial_list_status">Loan listing status</label>
+                        <select class="initial_list_status" id="initial_list_status" name="initial_list_status" aria-label="initial_list_status">
+                            <option selected>Select initial_list_status</option>
+                            <option value= 'f'>F</option>
+                            <option value= 'w'>W</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="purpose" class="purpose" name = "purpose">Purpose</label>
+                        <select class="purpose" id="purpose" name="purpose" aria-label="Purpose">
+                            <option selected>Select purpose</option>
+                            <option value= "car">Car</option>
+                            <option value= "credit_card">Credit_card</option>
+                            <option value= "debt_consolidation">Debt_consolidation</option>
+                            <option value= "educational">Educational</option>                           
+                            <option value= "home_improvement">Home improvement</option>
+                            <option value= "house">house</option>
+                            <option value= "major_purchase">Major purchase</option>
+                            <option value= "medical">Medical</option>
+                            <option value= "moving">Moving</option>
+                            <option value= "renewable_energy">Renewable energy</option>
+                            <option value= "small_business">Small business</option>
+                            <option value= "vacation">Vacation</option>
+                            <option value= "wedding">Wedding</option>
+                            <option value= "other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="home_ownership" class="home_ownership" name = "home_ownership">Home ownership</label>
+                        <select class="home_ownership" id="home_ownership" name="home_ownership" aria-label="home_ownership">
+                            <option selected>Select Home ownership</option>
+                            <option value= "MORTGAGE">MORTGAGE</option>
+                            <option value= "OWN">OWN</option>
+                            <option value= "RENT">RENT</option>
+                            <option value= "OTHER">OTHER</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="zipcode" class="zipcode" name = "zipcode">Zipcode</label>
+                        <select class="zipcode" id="zipcode" name = "zipcode" aria-label="Zipcode">
+                            <option selected>Select Zipcode</option>
+                            <option value= 813>813</option>
+                            <option value= 5113>5113</option>
+                            <option value= 11650>11650</option>
+                            <option value= 22690>22690</option>
+                            <option value= 29597>29597</option>
+                            <option value= 30723>30723</option>
+                            <option value= 48052>48052</option>
+                            <option value= 70466>70466</option>
+                            <option value= 86630>86630</option>
+                            <option value= 93700>93700</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="earliest_cr_year" class="earliest_cr_year">Earliest_credit line release year</label>
+                        <input type="number" class="form-control" id="earliest_cr_year" name="earliest_cr_year">
+                    </div>
+                </div>
+                <div class="col-md-6 my-2 d-flex align-items-end justify-content-around">
+                    <button type="submit" class="btn btn-info button" style="margin-left: 100%;">Predict</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <div>
+         <h2><center> {{ prediction }} </center></h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
