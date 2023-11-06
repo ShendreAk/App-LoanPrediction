@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Survey Form </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2> Geeks Help Survey Form </h2>
+        <div class="form-wrapper">
+            <form action="">
+                <div class="form-group">
+                    <label for="name"> Name: </label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email"> Email: </label>
+                    <input type="text" name="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group gender">
+                    Gender:
+                    <div class="genderDiv">
+                        <input type="radio" name="gender" id="male"><label for="gender"> Male </label>
+                        <input type="radio" name="gender" id="female"><label for="gender"> Female </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hear" id="hear"> Where from you know about Geeks Help? </label>
+                    <select>
+                        <option class="transparent" value="Instagram"> Instagram </option>
+                        <option class="transparent" value="Facebook"> Facebook </option>
+                        <option class="transparent" value="friends"> Friends </option>
+                        <option class="transparent" value="googleSearch"> Google Search </option>
+                        <option class="transparent" value="Randomly"> Randomly </option>
+                        <option class="transparent" value="other"> other </option>
+                    </select>
+                </div>
+                <div class="form-group flex">
+                    <label for=""> Will you recommend Geeks Help to your friends ? </label>
+                    <div class="recommendation">
+                        <input type="radio" name="recommend" id="yes"><label for="yes"> Yes </label>
+                        <input type="radio" name="recommend" id="no"><label for="no"> No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lang"> Favorite Language </label>
+                    <div class="box">
+                        <input type="checkbox" name="js" id="html"> <label for="html"> HTML </label>
+                        <input type="checkbox" name="js" id="css"> <label for="css"> CSS </label>
+                        <input type="checkbox" name="js" id="javascript"> <label for="javascript"> JavaScript </label>
+                        <input type="checkbox" name="js" id="python"> <label for="python"> Python </label>
+                        <input type="checkbox" name="js" id="java"> <label for="java"> Java </label>
+                        <input type="checkbox" name="js" id="c/c++"> <label for="c/c++"> C/C++ </label>
+                        <input type="checkbox" name="js" id="nodejs"> <label for="nodejs">NodeJS</label>
+                    </div>
+                </div>
+                <div class="form-group flex">
+                    <label for="suggestions"> How we can improve ourself? </label>
+                    <textarea name="suggestions" id="suggestions" cols="30" rows="10"></textarea>
+                </div>
+                <button type="submit"> Submit </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

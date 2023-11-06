@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href={{url_for('static',filename='predictor.css')}}>
+    <link rel="stylesheet" href={{url_for('static',filename='try1.css')}}>
     <title>Loan Approval Prediction</title>
 </head>
 <body>
@@ -16,25 +16,24 @@
             <h1 class="my-3 text-center">Predictor</h1>
             <div class="row">
                 <div class="col-md-6 my-2">
-
                     <div class="md-form">
                         <label for="Amount" class="Amount"> Total Amount</label>
-                        <input type="number" class="form-control" id="Amount" name="Amount", step="0.01">
+                        <input type="number" class="form-control" id="Amount" name="Amount", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="int_rate" class="int_rate">Interest Rate</label>
-                        <input type="number" class="form-control" id="int_rate" name="int_rate", step="0.01">
+                        <input type="number" class="form-control" id="int_rate" name="int_rate", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="term" class="term" name = "term">Term (in months)</label>
-                        <select type ="number" class="form-control" id="term" name="term" aria-label="Term in months">
-                            <option selected>Select Term (in months)</option>
+                        <select type ="number" class="form-control" id="term" name="term" aria-label="Term in months", style="width: 200px;">
+                            <option selected>Select Term </option>
                             <option value= 36>36 months</option>
                             <option value= 60>60 months</option>
                         </select>
@@ -44,76 +43,82 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="installment" class="installment">Installment</label>
-                        <input type="number" class="form-control" id="installment" name="installment", step="0.01">
+                        <input type="number" class="form-control" id="installment" name="installment", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="annual_inc" class="annual_inc">Annual Income</label>
-                        <input type="number" class="form-control" id="annual_inc" name="annual_inc", step="0.01">
+                        <input type="number" class="form-control" id="annual_inc" name="annual_inc", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="dti" class="dti">Debt-to-Income ratio (DTI)</label>
-                        <input type="number" class="form-control" id="dti" name="dti", step="0.01">
+                        <input type="number" class="form-control" id="dti" name="dti", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="open_acc" class="open_acc">Total active accounts</label>
-                        <input type="number" class="form-control" id="open_acc" name="open_acc", step="0.01">
+                        <input type="number" class="form-control" id="open_acc" name="open_acc", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="pub_rec" class="pub_rec">derogatory public records</label>
-                        <input type="number" class="form-control" id="pub_rec" name="pub_rec", step="0.01">
+                        <input type="number" class="form-control" id="pub_rec" name="pub_rec", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="revol_bal" class="revol_bal">Revolving balance</label>
-                        <input type="number" class="form-control" id="revol_bal" name="revol_bal", step="0.01">
+                        <input type="number" class="form-control" id="revol_bal" name="revol_bal", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="revol_util" class="revol_util">Revol_bal utilization rate</label>
-                        <input type="number" class="form-control" id="revol_util" name="revol_util", step="0.01">
+                        <input type="number" class="form-control" id="revol_util" name="revol_util", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="total_acc" class="total_acc">Total account</label>
-                        <input type="number" class="form-control" id="total_acc" name="total_acc", step="0.01">
+                        <input type="number" class="form-control" id="total_acc" name="total_acc", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="mort_acc" class="mort_acc">Mortgage accounts</label>
-                        <input type="number" class="form-control" id="mort_acc" name="mort_acc", step="0.01">
+                        <input type="number" class="form-control" id="mort_acc" name="mort_acc", step="0.01", style="width: 200px;">
                     </div>
                 </div>
 
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="pub_rec_bankruptcies" class="pub_rec_bankruptcies">Recorded Bankruptcies</label>
-                        <input type="text" class="form-control" id="pub_rec_bankruptcies" name="pub_rec_bankruptcies", step="0.01">
+                        <input type="text" class="form-control" id="pub_rec_bankruptcies" name="pub_rec_bankruptcies", step="0.01", style="width: 200px;">
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="md-form">
+                        <label for="earliest_cr_year" class="earliest_cr_year">Earliest_credit line release year</label>
+                        <input type="number" class="form-control" id="earliest_cr_year" name="earliest_cr_year", style="width: 200px;">
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="Subgrade" class="Subgrade" name="Subgrade">Grade</label>
-                        <select class="Subgrade" id="Subgrade" name="Subgrade" aria-label="Subgrade">
+                        <select class="Subgrade" id="Subgrade" name="Subgrade" aria-label="Subgrade", style="width: 250px; height: 45px">
                             <option selected>Select Grade</option>
                             <option value= "A1">A1</option>
                             <option value= "A2">A2</option>
@@ -157,8 +162,8 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="verification_status" class="verification_status">Verification_status</label>
-                        <select class="verification_status" id="verification_status" name="verification_status" aria-label="verification_status">
-                            <option selected>Select Grade</option>
+                        <select class="verification_status" id="verification_status" name="verification_status" aria-label="verification_status", style="width: 250px;height: 45px">
+                            <option selected>Select Status</option>
                             <option value= "Not Verified">Not Verified</option>
                             <option value= "Source Verified">Source Verified</option>
                             <option value= "Verified">Verified</option>
@@ -169,7 +174,7 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="application_type" class="application_type">Application Type</label>
-                        <select class="application_type" id="application_type" name="application_type" aria-label="application_type">
+                        <select class="application_type" id="application_type" name="application_type" aria-label="application_type", style="width: 250px;height: 45px">
                             <option selected>Select application type</option>
                             <option value= "DIRECT_PAY">DIRECT_PAY</option>
                             <option value= "INDIVIDUAL">INDIVIDUAL</option>
@@ -181,8 +186,8 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="initial_list_status" class="initial_list_status">Loan listing status</label>
-                        <select class="initial_list_status" id="initial_list_status" name="initial_list_status" aria-label="initial_list_status">
-                            <option selected>Select initial_list_status</option>
+                        <select class="initial_list_status" id="initial_list_status" name="initial_list_status" aria-label="initial_list_status",style="width: 250px;height:45px">
+                            <option selected >Select Initial List Status</option>
                             <option value= 'f'>F</option>
                             <option value= 'w'>W</option>
                         </select>
@@ -192,7 +197,7 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="purpose" class="purpose" name = "purpose">Purpose</label>
-                        <select class="purpose" id="purpose" name="purpose" aria-label="Purpose">
+                        <select class="purpose" id="purpose" name="purpose" aria-label="Purpose", style="width: 250px;height: 45px">
                             <option selected>Select purpose</option>
                             <option value= "car">Car</option>
                             <option value= "credit_card">Credit_card</option>
@@ -215,7 +220,7 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="home_ownership" class="home_ownership" name = "home_ownership">Home ownership</label>
-                        <select class="home_ownership" id="home_ownership" name="home_ownership" aria-label="home_ownership">
+                        <select class="home_ownership" id="home_ownership" name="home_ownership" aria-label="home_ownership", style="width: 250px;height: 45px">
                             <option selected>Select Home ownership</option>
                             <option value= "MORTGAGE">MORTGAGE</option>
                             <option value= "OWN">OWN</option>
@@ -228,8 +233,8 @@
                 <div class="col-md-6 my-2">
                     <div class="md-form">
                         <label for="zipcode" class="zipcode" name = "zipcode">Zipcode</label>
-                        <select class="zipcode" id="zipcode" name = "zipcode" aria-label="Zipcode">
-                            <option selected>Select Zipcode</option>
+                        <select class="zipcode" id="zipcode" name = "zipcode" aria-label="Zipcode",style="width: 250px;height: 45px">
+                            <option selected>Select Zipcode </option>
                             <option value= 813>813</option>
                             <option value= 5113>5113</option>
                             <option value= 11650>11650</option>
@@ -242,17 +247,11 @@
                             <option value= 93700>93700</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="col-md-6 my-2">
-                    <div class="md-form">
-                        <label for="earliest_cr_year" class="earliest_cr_year">Earliest_credit line release year</label>
-                        <input type="number" class="form-control" id="earliest_cr_year" name="earliest_cr_year">
-                    </div>
-                </div>
-                <div class="col-md-6 my-2 d-flex align-items-end justify-content-around">
-                    <button type="submit" class="btn btn-info button" style="margin-left: 100%;">Predict</button>
-                </div>
+                </div>        
+                
+            </div>
+            <div class="container">
+                <button type="submit" class="btn " id="btn" style=" width: 200px; text-align: center;">Predict</button>
             </div>
         </form>
     </section>

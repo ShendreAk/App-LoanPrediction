@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+	scrollbar-width: thin;
+	--primary-color: #1bdbe5;
+    
+}
+body {
+    background: linear-gradient(#0004, #0004),
+		url(https://img.freepik.com/premium-photo/yellow-orange-background-with-abstract-texture-style-light-skyblue-light_921860-37680.jpg?w=900)
+			no-repeat;
+	background-size: cover;
+	background-position: center;
+    background-color: #0fd3dd;
+    font-family: 'Poppins', sans-serif;
+}
+.md-form{
+    color: #ffffff;
+}
+
+
+.form {
+  /* other styling */
+    position:relative;
+    align-items: center;
+    background-color: rgba(3, 250, 229, 0.571);
+    background: linear-gradient(#0004, #0004),
+		url(https://images.pexels.com/photos/3605420/pexels-photo-3605420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+			no-repeat;
+	background-size: cover;
+	background-position: center;
+    margin: 10px 400px;
+    padding: 20px 20px;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    border-radius: 5px;
+}
+
+.form h1 {
+    color: #ffffff;
+}
+
+.container { 
+    display: inline-block;
+    justify-content: center; 
+    text-align: center;
+    background-color: rgb(255, 215, 14);  
+    width: 200px;  
+    height: 50px;  
+    padding: 0px;
+    border-radius: 12px;
+    margin-left: 60%;
+    
+    }  
+.container:hover {
+        background-color: #4c56af; /* Green */
+        color: white;
+      }
+#btn{
+    font-size: 25px;
+    color: rgb(0, 55, 255);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
