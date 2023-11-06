@@ -1,7 +1,7 @@
 import flask
 import numpy as np
 from flask import render_template, request, redirect
-from utils import Model, Preprocess
+from utils import Prediction, Preprocess
 
 app = flask.Flask(__name__)
 app.config["debug"] = True
@@ -43,10 +43,9 @@ def approved():
                          Revol_util, Total_account, Mort_acc, Bankruptcies, Grade, Verification_status, 
                          Application_type, Initial_list_status, Purpose, Home_ownership, Zipcode, Earliest_cr_year]
         processed = Preprocess(features_list)
-        X_array = processed.out_array
-        model = Model(X_array)
-        pred = model.predict()
-        pred = np.where(pred >0.5, 1,0)
+        X_array = processed.out_array()
+        res= Prediction()
+        pred = res.predict(X_array)
         if pred == 1:
             return render_template("approved.html")
         else:

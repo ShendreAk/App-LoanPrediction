@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
 
 dic1 = {'A2':False,'A3':False,'A4':False,'A5':False,'B1':False,'B2':False,'B3':False,'B4':False,'B5':False,'C1':False,'C2':False,'C3':False,
@@ -26,26 +26,28 @@ class Preprocess:
         output =[]
         for num in range(0,13):
             output.append(self.list[num])
+        
         subgrade = dic1
         if self.list[13] == "A1":
-            output = output + list(dic1.values())
+            output = output + list(dic1.values())  
         else:
             subgrade[self.list[13]] =True
             output = output + list(subgrade.values())
-
-        verification = dic2
-        if self.list[14] == "Not Verified":
-            output = output + list(dic2.values())
+        
+        verify = dic2
+        if self.list[14]=="Not Verified":
+            output = output + list(verify.values())
         else:
-            verification[self.list[14]] =True
-            output = output + list(verification.values())
-
+            verify[self.list[14]]=True
+            output = output + list(verify.values())
+            
         app_type = dic3
         if self.list[15] == "DIRECT_PAY":
-            output = output + list(dic3.values())
+            output = output + list(dic3.values())          
         else:
-            verification[self.list[15]] =True
+            app_type[self.list[15]] =True
             output = output + list(app_type.values())
+            
 
         lis_status = dic4
         if self.list[16]=='f':
@@ -53,6 +55,7 @@ class Preprocess:
         else:
             lis_status[self.list[16]] = True
             output = output + list(lis_status.values())
+            
 
         purpose = dic5
         if self.list[17]=="car":
@@ -69,17 +72,63 @@ class Preprocess:
             output = output + list(ownership.values())
 
         output = output + list(self.list[19:])
-        output_array = np.array(output)
-        scaler = StandardScaler()
-        output_array = scaler.transform(output_array)
-        return output_array        
+        # print("last-two")
+        # print(output)
+        # print("length:",len(output))
 
-class Model:
-    def __init__(self,input_array):
-        self.array = input_array
-    def predict(self):
+        # Train dataset for scaling purpose
+        dataf = pd.read_csv("/Users/akshayshendre/Desktop/Apploan/models/df1.csv")
+        dataf = dataf.drop("Unnamed: 0", axis=1)
+        X = dataf.values
+        # print(X.shape)
+        scaler = MinMaxScaler()
+        scaled_array = scaler.fit_transform(X)
+
+        # Converting output list into dataframe
+        df = pd.DataFrame([output], columns=['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc', 'dti',
+                                             'open_acc', 'pub_rec', 'revol_bal', 'revol_util', 'total_acc',
+                                             'mort_acc', 'pub_rec_bankruptcies', 'A2', 'A3', 'A4', 'A5', 'B1', 'B2',
+                                             'B3', 'B4', 'B5', 'C1', 'C2', 'C3', 'C4', 'C5', 'D1', 'D2', 'D3', 'D4',
+                                             'D5', 'E1', 'E2', 'E3', 'E4', 'E5', 'F1', 'F2', 'F3', 'F4', 'F5', 'G1',
+                                             'G2', 'G3', 'G4', 'G5', 'verification_status_Source Verified',
+                                             'verification_status_Verified', 'application_type_INDIVIDUAL',
+                                             'application_type_JOINT', 'initial_list_status_w',
+                                             'purpose_credit_card', 'purpose_debt_consolidation',
+                                             'purpose_educational', 'purpose_home_improvement', 'purpose_house',
+                                             'purpose_major_purchase', 'purpose_medical', 'purpose_moving',
+                                             'purpose_other', 'purpose_renewable_energy', 'purpose_small_business',
+                                             'purpose_vacation', 'purpose_wedding', 'OTHER', 'OWN', 'RENT',
+                                             'zipcode', 'earliest_cr_year'])
+        # print(df, "\n")
+        array = df.values
+
+        # print(array)
+        array = array.reshape(1,-1)
+        scaled_array = scaler.transform(array)
+        scaled_array = scaled_array.reshape(1,-1)
+        # print("scaled",scaled_array)
+        return scaled_array         
+
+class Prediction:
+    def __init__(self):
+        # self.array = input_array
+        pass
+    
+    def predict(self,input_array):
         model = load_model("models/model.h5")
-        pred = model.predict(self.array)
+        # print(model.summary())
+        pred = model.predict(input_array)
+        # print(pred, "\n")
+        pred = np.where(pred[0][0] >0.5, 1,0)
         return pred
             
-    
+if __name__=="__main__":
+    lis = [40000, 36, 11.44, 265.66, 31789.88,22.05, 17.0, 3., 20131., 53.3, 27., 3., 3., "A2", "Source Verified", "INDIVIDUAL", "w", "home_improvement", "OTHER", 22690, 2004]
+    processed = Preprocess(lis)
+    X_array = processed.out_array()
+    Predictor = Prediction()
+    pred = Predictor.predict(X_array)
+    # print(pred[0][0])
+    # print("\n", pred)
+    # pred = np.where(pred[0][0] >0.5, 1,0)
+    print("Predicited value",pred)
